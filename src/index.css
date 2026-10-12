@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { @apply bg-ink font-sans text-mist antialiased; }
+  ::selection { background: #e8486f; color: #fff; }
+  :focus-visible { outline: 2px solid #8fb8ff; outline-offset: 3px; border-radius: 4px; }
+}
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes dash { to { stroke-dashoffset: -20; } }
+
+.marquee-track { animation: marquee 45s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.flow { stroke-dasharray: 4 6; animation: dash 0.8s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track, .flow { animation: none; }
+}
